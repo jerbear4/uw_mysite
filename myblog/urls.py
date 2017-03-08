@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^posts/(?P<post_id>\d+)/$',
         detail_view,
         name="blog_detail"),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
