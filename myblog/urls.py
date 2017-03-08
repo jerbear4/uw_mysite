@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^posts/(?P<post_id>\d+)/$',
         detail_view,
         name="blog_detail"),
-   
+
 ]

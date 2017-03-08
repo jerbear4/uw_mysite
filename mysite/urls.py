@@ -19,6 +19,9 @@ from django.conf.urls import include
 from django.contrib.auth.views import login, logout
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from rest_framework.urlpatterns import format_suffix_patterns
+from snippets import views
+
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -40,5 +43,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^logout/$', logout, {'next_page': '/'}, name="logout"),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^snippets/$', views.snippet_list),
+    url(r'^snippets/(?P<pk>[0-9]+)$', views.snippet_detail)
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
