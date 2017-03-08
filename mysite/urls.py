@@ -39,7 +39,8 @@ router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    #url(r'^', include(router.urls)),
+    url(r'^', include('snippets.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^logout/$', logout, {'next_page': '/'}, name="logout"),
